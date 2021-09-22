@@ -2,15 +2,19 @@ import discord
 from discord.ext import commands, tasks
 import os
 import json
+import time
+import datetime
 intents = discord.Intents.all()
 intents.typing = False
 
 def get_prefix(client, message):
     with open('./data/prefixes.json', 'r') as f:
         prefixes = json.load(f)
+        if (type(message.channel) == discord.DMChannel):
+            return prefixes['0']
     return prefixes[str(message.guild.id)]
 
-client = commands.Bot(command_prefix = get_prefix, intents=intents)
+client = commands.Bot(command_prefix = get_prefix, intents = intents)
 
 @client.event
 async def on_ready():
@@ -19,7 +23,7 @@ async def on_ready():
 
 @tasks.loop(seconds = 10)
 async def loop():
-    await client.change_presence(status = discord.Status.online, activity = discord.Game(f'1.0.0v \ {len(client.users)}users \ {len(client.guilds)}servers'))
+    await client.change_presence(status = discord.Status.online, activity = discord.Game(f'.help \ 1.0.0v \ {len(client.users)}users \ {len(client.guilds)}servers'))
 
 @client.event
 async def on_command_error(ctx, error):
