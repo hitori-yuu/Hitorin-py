@@ -64,19 +64,4 @@ async def on_guild_remove(guild):
     with open('./data/prefixes.json', 'w') as f:
         json.dump(prefixes, f, indent = 4)
 
-client.run('ODc2MTE2NDE4MDM3NDQ0NjMw.YRfY_w.FWOGmfq57xsaPy3bEsqai4jxW_g')
-
-# @client.event
-# async def on_command_error(ctx, error):
-#     if isinstance(error, commands.CommandNotFound):
-#         await ctx.send('That command doesn\'t exist.')
-
-# @client.event
-# async def on_command_error(ctx, error):
-#     if isinstance(error, commands.ArgumentParsingError):
-#         await ctx.send('Please specify a valid argument.')
-
-# @<command>.error
-# async def <command>_error(ctx, error):
-#     if isinstance(error, commands.<error_type>):
-#         await ctx.send(<error_message>)
+client.run(TOKEN)
