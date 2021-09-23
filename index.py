@@ -65,4 +65,3 @@ async def on_guild_remove(guild):
         json.dump(prefixes, f, indent = 4)
 
 client.run(TOKEN)
-a
