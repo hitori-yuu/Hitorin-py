@@ -20,7 +20,7 @@ class Useful(commands.Cog):
         joined = 'None'
         if (type(ctx.channel) != discord.DMChannel):
             joined = ctx.guild.me.joined_at.strftime('%Y/%m/%d %H:%M')
-        embed = discord.Embed(title = 'Bot Details', description = '**BOT invitation link** -> [Click here](https://discord.com/api/oauth2/authorize?client_id=876116418037444630&permissions=8&scope=bot)',color = discord.Colour.from_rgb(88, 101, 242))
+        embed = discord.Embed(title = 'Bot Details', description = '**BOT invitation link** -> [Click here](https://discord.com/api/oauth2/authorize?client_id=876116418037444630&permissions=8&scope=bot)', color = discord.Colour.from_rgb(88, 101, 242))
         embed.set_thumbnail(url = self.client.user.avatar_url_as(format=None, static_format='png', size=1024))
         embed.set_author(name = ctx.author, icon_url = ctx.author.avatar_url_as(format=None, static_format='png', size=1024))
         embed.add_field(name = '__General:__', value = f'**[Name]** {client.name}#{client.discriminator}\n**[ID]** {client.id}\n**[Email]** {client.email}', inline = False)
