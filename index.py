@@ -18,7 +18,7 @@ client = commands.Bot(command_prefix = get_prefix, intents = intents)
 
 @client.event
 async def on_ready():
-    print(f'Ready -> {client.user.name}#{client.user.discriminator}')
+    print(f'Ready -> {client.user}')
     loop.start()
 
 @tasks.loop(seconds = 10)
@@ -29,15 +29,12 @@ async def loop():
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send('That command doesn\'t exist.')
-
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.ArgumentParsingError):
+        
+    elif isinstance(error, commands.ArgumentParsingError):
         await ctx.send('Please specify a valid argument.')
-
-@client.event
-async def on_command_error(ctx, error):
-    print(error)
+    
+    else:
+        print(error)
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
